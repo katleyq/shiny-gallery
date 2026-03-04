@@ -4,7 +4,7 @@ library(htmltools)
 # ---------------------------------------------------------------------------
 # Configuration — override with environment variables on the server
 # ---------------------------------------------------------------------------
-SHINY_BASE_DIR <- Sys.getenv("SHINY_BASE_DIR", "/srv/shiny")
+SHINY_BASE_DIR <- Sys.getenv("SHINY_BASE_DIR", "/srv/shiny-server")
 SHINY_BASE_URL <- Sys.getenv("SHINY_BASE_URL", "/")        # e.g. "/" or "/shiny/"
 GALLERY_NAME   <- basename(normalizePath("."))              # exclude self
 
