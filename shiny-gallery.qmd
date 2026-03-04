@@ -1,11 +1,45 @@
 ---
-title: "shiny-gallery"
+title: "Shiny Gallery"
 ---
 
-## Quarto
+This Shiny app serves as a home-page gallery for all Shiny apps hosted under `/srv/shiny`.
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+## How it works
 
-```{r}
-1 + 1
+The gallery scans `SHINY_BASE_DIR` (default: `/srv/shiny`) at startup and every 60 seconds thereafter, detecting any subdirectory that contains an `app.R` or `server.R` file.
+
+## Customising an app's card
+
+Create an `app-info.yml` file inside your app's directory to control how it appears in the gallery:
+
+```yaml
+title: "My Awesome App"
+description: "A short description shown on the card."
+icon: "chart-bar"   # Any Font Awesome 6 icon name (without the fa- prefix)
+tags:
+  - ecology
+  - visualization
+```
+
+All fields are optional. If omitted, the gallery falls back to the folder name.
+
+## Configuration
+
+Set these environment variables on the server to override defaults:
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `SHINY_BASE_DIR` | `/srv/shiny` | Directory to scan for apps |
+| `SHINY_BASE_URL` | `/` | Base URL path prepended to app links |
+
+## Deployment
+
+Clone this repository into `/srv/shiny/gallery` (or wherever you want it served), then
+point your Shiny Server config at it:
+
+```nginx
+location / {
+  app_dir /srv/shiny/gallery;
+  log_dir /var/log/shiny-server;
+}
 ```

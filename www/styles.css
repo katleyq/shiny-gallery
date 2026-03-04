@@ -1,0 +1,261 @@
+/* ==========================================================================
+   Shiny Gallery — styled after UCSB MEDS design system
+   Colors: Teal #047C90 | Dark Blue #003660 | Green #78A540
+   Fonts:  Sanchez (headings) | Nunito (body) | Roboto Mono (code/tags)
+   ========================================================================== */
+
+/* ---- Design tokens ---------------------------------------------------- */
+:root {
+  --teal:       #047C90;
+  --dark-blue:  #003660;
+  --green:      #78A540;
+  --off-white:  #F7F7F7;
+  --baby-blue:  #d2e3f3;
+  --gray:       #ADADAD;
+  --dark-gray:  #373A3E;
+  --white:      #FFFFFF;
+  --card-border:#e0e6ed;
+  --radius:     8px;
+  --shadow:     0 4px 18px rgba(4, 124, 144, 0.15);
+}
+
+/* ---- Reset / base ------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+  background-color: var(--off-white);
+  color: var(--dark-gray);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Shiny wraps content in a container — undo its default padding */
+.container-fluid {
+  padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Sanchez', serif;
+}
+
+a { color: var(--teal); }
+a:hover { color: var(--green); }
+
+/* ---- Header ----------------------------------------------------------- */
+.site-header {
+  background-color: var(--dark-blue);
+  color: var(--white);
+  padding: 3.5rem 2rem 3rem;
+  text-align: center;
+}
+
+.site-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 0.5rem;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+
+.header-subtitle {
+  font-size: 1.1rem;
+  color: var(--baby-blue);
+  margin: 0;
+  font-weight: 300;
+}
+
+/* ---- Main content ----------------------------------------------------- */
+.main-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 2.5rem auto;
+  padding: 0 2rem;
+  flex: 1;
+}
+
+/* ---- Gallery header (h2 + count) -------------------------------------- */
+.gallery-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--dark-blue);
+}
+
+.gallery-header h2 {
+  margin: 0;
+  color: var(--dark-blue);
+  font-size: 1.6rem;
+}
+
+.app-count {
+  color: var(--gray);
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* ---- App grid --------------------------------------------------------- */
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ---- App card --------------------------------------------------------- */
+.app-card {
+  background: var(--white);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.1rem;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.app-card:hover {
+  box-shadow: var(--shadow);
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  color: var(--teal);
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  width: 2.2rem;
+  text-align: center;
+  padding-top: 0.15rem;
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  color: var(--dark-blue);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  color: var(--dark-gray);
+  margin: 0;
+  flex: 1;
+  line-height: 1.5;
+}
+
+/* ---- Tags ------------------------------------------------------------- */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tag {
+  background-color: var(--baby-blue);
+  color: var(--dark-blue);
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+/* ---- Launch button ---------------------------------------------------- */
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--teal);
+  border: 1.5px solid var(--teal);
+  background: transparent;
+  padding: 0.35rem 0.9rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 800;
+  align-self: flex-start;
+  transition: color 0.2s, border-color 0.2s;
+  line-height: 1.4;
+}
+
+.card-link:hover {
+  color: var(--green);
+  border-color: var(--green);
+  text-decoration: none;
+}
+
+.card-link i {
+  font-size: 0.75rem;
+}
+
+/* ---- Empty state ------------------------------------------------------ */
+.empty-state {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: var(--gray);
+}
+
+.empty-icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--gray);
+}
+
+.empty-state p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.empty-state code {
+  font-family: 'Roboto Mono', monospace;
+  background: var(--baby-blue);
+  color: var(--dark-blue);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+/* ---- Footer ----------------------------------------------------------- */
+.site-footer {
+  background-color: var(--dark-blue);
+  color: var(--baby-blue);
+  text-align: center;
+  padding: 1.25rem;
+  font-size: 0.875rem;
+  margin-top: auto;
+}
+
+.site-footer p { margin: 0; }
+
+.site-footer a {
+  color: var(--baby-blue);
+  text-decoration: underline;
+}
+
+.site-footer a:hover {
+  color: var(--white);
+}
+
+/* ---- Responsive ------------------------------------------------------- */
+@media (max-width: 600px) {
+  .main-content { padding: 0 1rem; }
+  .site-header   { padding: 2.5rem 1rem 2rem; }
+  .app-grid      { grid-template-columns: 1fr; }
+  .gallery-header { flex-direction: column; gap: 0.25rem; }
+}
